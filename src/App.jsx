@@ -14,6 +14,7 @@ function App() {
   }
   useEffect(() => {database()},[])
   return <>
+  <div><h1 className="bg-amber-400 text-2xl">header</h1></div>
   </>;
 }
 
