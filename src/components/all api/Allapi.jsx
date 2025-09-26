@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const key= import.meta.env.VITE_GAMING_API;
+const key= import.meta.env.VITE_API_KEY;
 
 
     const globalURL = axios.create({

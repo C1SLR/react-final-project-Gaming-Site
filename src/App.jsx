@@ -7,43 +7,14 @@ import NavBar from "./components/nav bar/NavBar";
 import { Outlet } from "react-router-dom";
 
 function App() {
-  const [gameData, setGameData] = useState([]);
 
-  useEffect(() => {
-    const data = async () => {
-      try {
-        const list = await Allapi.listURL;
-        const games = list.data.results.map((game) => ({
-          id: game.id,
-          title: game.name,
-
-          released: game.released.split("-")[0],
-          bg: game.background_image,
-          img: game.genres[0].image_background,
-        }));
-        setGameData(games);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    data();
-  }, []);
+ 
 
   return (
     <div className="bg-black/95">
       <NavBar />
       <Outlet />
-      <div className="flex flex-wrap justify-evenly gap-3 p-10">
-        {gameData.map((game) => (
-          <div
-            key={game.id}
-            className="border hover:scale-105 hover:transition"
-          >
-            <GamingCard game={game} />
-          </div>
-        ))}
-        <GamingAPI />
-      </div>
+    
     </div>
   );
 }
