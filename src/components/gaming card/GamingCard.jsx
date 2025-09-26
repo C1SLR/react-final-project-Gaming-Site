@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import Allapi from '../all api/Allapi';
+import Allapi from "../all api/Allapi";
 
 import { IoDesktopSharp } from "react-icons/io5";
 import { FaPlaystation } from "react-icons/fa";
@@ -8,15 +8,13 @@ import { FaXbox } from "react-icons/fa";
 function GamingCard({ game }) {
   return (
     <div className="w-3xs py-5 text-white">
-      <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30  overflow-hidden shadow-lg h-full">
-      {/* <div className="bg-black rounded-xl bg-[radial-gradient(circle_at_left,rgba(130,180,255,0.4),transparent),radial-gradient(circle_at_right,rgba(0,0,255,0.8),transparent)]  overflow-hidden shadow-lg h-full"> */}
-  
+      <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
         <img
           src={game.bg}
           className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
           alt=""
         />
-        <div className="">
+        <div>
           <div className="py-2">
             <div className="flex flex-col px-4 py-2 w-full font-semibold">
               <div className="text-xl font-bold">
