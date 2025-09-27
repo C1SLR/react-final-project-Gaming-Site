@@ -1,18 +1,24 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../Context/Context";
-import { listOfDlcGames } from "../all api/Allapi";
-
-function GamePage() {
-  const { gameSlug, setDlcGamesData } = useContext(GameContext);
+import { listOfDlcGames, screenShots } from "../all api/Allapi";
+import { useParams } from "react-router-dom";
+function GamePage({}) {
+  const { slug } = useParams();
+  const { setDlcGamesData } = useContext(GameContext);
   useEffect(() => {
-    listOfDlcGames().then((res) => {
-      console.log(res);
-      setDlcGamesData(res);
-    });
-  }, []);
+    if (slug) {
+      listOfDlcGames(slug).then((res) => {
+        // console.log(res);
+        setDlcGamesData(res);
+        screenShots(slug).then((res) => {
+          console.log(res);
+        });
+      });
+    }
+  }, [slug]);
   return (
     <div className="text-white">
-      <p>{gameSlug}</p>
+      <p>{slug}</p>
     </div>
   );
 }

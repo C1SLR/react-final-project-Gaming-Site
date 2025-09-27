@@ -1,13 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { listOfGames } from "../all api/Allapi";
 import { IoDesktopSharp } from "react-icons/io5";
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { GameContext } from "../Context/Context";
 
-const GamingCard = () => {
-
+const GamingCard = ({ slug }) => {
   const { gamesData, setGamesData } = useContext(GameContext);
   useEffect(() => {
     listOfGames().then((res) => {
@@ -15,11 +14,6 @@ const GamingCard = () => {
       // console.log(res);
     });
   }, []);
-
-  const detailsHandler = () => {
-    // setGameSlug();
-    // console.log(slug);
-  };
   return (
     <div>
       {gamesData.length > 0 ? (
@@ -31,8 +25,7 @@ const GamingCard = () => {
             >
               <div className="w-3xs py-5 text-white">
                 <Link
-                  onClick={() => detailsHandler(val.slug)}
-                  to="/game-details"
+                  to={`/game-details/${val.slug}`}
                 >
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img

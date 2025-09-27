@@ -5,7 +5,7 @@ const globalURL = axios.create({
 });
 export const listOfGames = async () => {
   const res = await globalURL.get(
-    `/games?key=${key}&ordering=created&page_size=30`
+    `/games?key=${key}&ordering=-rating&page_size=20`
   );
   return res.data.results;
 };
@@ -15,7 +15,11 @@ export const popularGamesBanner = async () => {
   );
   return res.data.results;
 };
-export const listOfDlcGames = async () => {
-  const res = await globalURL.get(`/games/${slug}/additions?key=${key}`);
+export const listOfDlcGames = async (gameSlug) => {
+  const res = await globalURL.get(`/games/${gameSlug}/additions?key=${key}`);
+  return res.data;
+};
+export const screenShots = async (gameSlug) => {
+  const res = await globalURL.get(`/games/${gameSlug}/screenshots?key=${key}`);
   return res.data.results;
 };
