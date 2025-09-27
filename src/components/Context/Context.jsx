@@ -1,18 +1,26 @@
-import { createContext } from "react";
-import GamingAPI from "../gaming api/GamingAPI";
+import { createContext, useState } from "react";
 
 export const GameContext = createContext();
 
-const [gameData, setGameData] = useState([]);
-
-function Context() {
+export const GameProvider = ({ children }) => {
+  const [gamesData, setGamesData] = useState([]);
+  const [bannerPhoto, setBannerPhoto] = useState([]);
+  const [gamesdetails, setGamesDetails] = useState([]);
+  const [dlcGamesData, setDlcGamesData] = useState([]);
   return (
-    <>
-      <GameContext.Provider value={{ gameData, setGameData }}>
-        <GamingAPI />
-      </GameContext.Provider>
-    </>
+    <GameContext.Provider
+      value={{
+        gamesData,
+        setGamesData,
+        bannerPhoto,
+        setBannerPhoto,
+        gamesdetails,
+        setGamesDetails,
+        dlcGamesData,
+        setDlcGamesData,
+      }}
+    >
+      {children}
+    </GameContext.Provider>
   );
-}
-
-export default Context;
+};

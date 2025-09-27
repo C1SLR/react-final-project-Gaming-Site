@@ -1,12 +1,19 @@
-// import React from "react"
-// import GamingCard from "../gaming card/GamingCard";
-// function GamePage() {
+import { useContext, useEffect } from "react";
+import { GameContext } from "../Context/Context";
+import { listOfDlcGames } from "../all api/Allapi";
 
-
-//     return(
-//      <>
-//       <GamingCard/>
-//      </>
-//     )
-// }
-// export default GamePage;
+function GamePage() {
+  const { gameSlug, setDlcGamesData } = useContext(GameContext);
+  useEffect(() => {
+    listOfDlcGames().then((res) => {
+      console.log(res);
+      setDlcGamesData(res);
+    });
+  }, []);
+  return (
+    <div className="text-white">
+      <p>{gameSlug}</p>
+    </div>
+  );
+}
+export default GamePage;
