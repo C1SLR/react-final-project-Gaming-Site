@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   useAuthSync();
   return (
-    <div className="bg-black/95">
+    <div className="bg-black/92">
       <NavBar />
       <GameProvider>
         <Outlet />
