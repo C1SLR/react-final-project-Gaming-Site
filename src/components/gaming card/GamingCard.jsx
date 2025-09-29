@@ -1,17 +1,31 @@
 import { useEffect, useContext } from "react";
 import { listOfGames } from "../all api/Allapi";
-import { IoDesktopSharp } from "react-icons/io5";
-import { FaPlaystation } from "react-icons/fa";
-import { FaXbox } from "react-icons/fa";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GameContext } from "../Context/Context";
+import { FaAndroid } from "react-icons/fa";
+import { IoDesktopSharp } from "react-icons/io5";
+import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
+import { FaXbox } from "react-icons/fa";
+import { BsNintendoSwitch } from "react-icons/bs";
+import Rating from "@mui/material/Rating";
 
 const GamingCard = ({ slug }) => {
-  const { gamesData, setGamesData } = useContext(GameContext);
+  const platIcons = {
+    pc: <IoDesktopSharp />,
+    xbox: <FaXbox />,
+    playstation: <FaPlaystation />,
+    mac: <FaApple />,
+    nintendo: <BsNintendoSwitch />,
+    linux: <FaLinux />,
+    android: <FaAndroid />,
+  };
+
+  const { gamesData, setGamesData, Maturity } = useContext(GameContext);
   useEffect(() => {
     listOfGames().then((res) => {
       setGamesData(res);
-      // console.log(res);
+
+      console.log(res);
     });
   }, []);
   return (
@@ -24,9 +38,7 @@ const GamingCard = ({ slug }) => {
               className=" hover:scale-105 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
-                <Link
-                  to={`/game-details/${val.slug}`}
-                >
+                <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img
                       src={val.background_image}
@@ -35,33 +47,35 @@ const GamingCard = ({ slug }) => {
                     />
                     <div>
                       <div>
-                        <h1 className="text-center text-lg text-gray-200 font-medium">
+                        <h1 className="text-center h-10 text-lg text-gray-200 font-medium">
                           {val.name}
                         </h1>
                       </div>
                       <div className="py-2">
                         <div className="flex flex-col px-4 py-2 w-full font-semibold">
-                          <div className="text-xl font-bold">
+                          {/* <div className="text-xl font-bold">
                             <h1>{val.title}</h1>
-                          </div>
+                          </div> */}
 
                           <div className="flex items-center justify-between">
                             <p className="text-lg text-cyan-600">
-                              {val.released}
+                              {val.released?.split("-")[0]}
                             </p>
-                            <span className="text-yellow-300">★★★★★</span>
+                            <Rating name="half-rating-read" defaultValue={val.rating} precision={0.2} readOnly />
                           </div>
                         </div>
                       </div>
                       <div className="flex justify-between items-center gap-4">
                         <div className="px-4 flex items-center gap-4">
-                          <img src="/Everyone.svg" className="w-10" alt="" />
-                          <p className="text-gray-500 text-xl font-semibold">
-                            Action
-                          </p>
-                        </div>
-                        <div className="px-4 flex gap-2 text-xl">
-                          <span>
+                          <span className="w-10">
+                            {Maturity[val.esrb_rating?.slug] || "N/A"}
+                          </span>
+                          <div className="flex flex-col gap-2">
+                            <p className="text-gray-500 text-xl font-semibold">
+                              {val.genres[0]?.name}
+                            </p>
+                            <div className=" flex gap-1  text-2xl">
+                              {/* <span>
                             <IoDesktopSharp />
                           </span>
                           <span>
@@ -69,10 +83,18 @@ const GamingCard = ({ slug }) => {
                           </span>
                           <span>
                             <FaXbox />
-                          </span>
+                          </span> */}
+                              {val.parent_platforms?.map((plat) => (
+                                <span key={plat.platform?.id}>
+                                  {platIcons[plat.platform?.slug] || "N/A"}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div className="text-gray-500 p-4 flex justify-end">
+
+                      <div className="text-gray-400 pt-6 pb-3 text-xl  flex justify-center">
                         <button> View details</button>
                       </div>
                     </div>

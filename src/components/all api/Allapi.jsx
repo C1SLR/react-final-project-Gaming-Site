@@ -1,11 +1,11 @@
 import axios from "axios";
-const key = import.meta.env.VITE_GAMING_API;
+const key = import.meta.env.VITE_API_KEY;
 const globalURL = axios.create({
   baseURL: "https://api.rawg.io/api",
 });
 export const listOfGames = async () => {
   const res = await globalURL.get(
-    `/games?key=${key}&ordering=-rating&page_size=20`
+    `/games?key=${key}&ordering=releases&page_size=20`
   );
   return res.data.results;
 };
@@ -15,6 +15,10 @@ export const popularGamesBanner = async () => {
   );
   return res.data.results;
 };
+export const gameDetails = async (gameSlug) => {
+    const res = await globalURL.get(`/games/${gameSlug}?key=${key}`)
+    return res.data;
+}
 export const listOfDlcGames = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}/additions?key=${key}`);
   return res.data;
