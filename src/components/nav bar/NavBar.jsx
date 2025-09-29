@@ -48,7 +48,7 @@ const NavBar = () => {
             <div>
               <img
                 src={user?.picture}
-                alt={user.name || "User Profile"}
+                alt={user?.name || "User Profile"}
                 className="w-8 h-8 rounded-full border border-blue-500"
               />
               <span>{user?.name}</span>
