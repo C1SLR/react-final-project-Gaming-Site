@@ -1,5 +1,5 @@
-import { useEffect, useContext } from "react";
-import {listOfGames} from "../all api/Allapi";
+import { useState, useEffect, useContext } from "react";
+import { popular2025 } from "../all api/Allapi";
 import { Link } from "react-router-dom";
 import { GameContext } from "../Context/Context";
 import { FaAndroid } from "react-icons/fa";
@@ -8,8 +8,9 @@ import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
+import Skeleton from "@mui/material/Skeleton";
 
-const GamingCard = ({ slug }) => {
+const NewReleaseCard = ({ slug }) => {
   const platIcons = {
     pc: <IoDesktopSharp />,
     xbox: <FaXbox />,
@@ -20,28 +21,34 @@ const GamingCard = ({ slug }) => {
     android: <FaAndroid />,
   };
 
-  const { gamesData, setGamesData, Maturity } = useContext(GameContext);
+  const { Maturity } = useContext(GameContext);
+  const [ newGamesData, setNewGamesData,] = useState([])
   useEffect(() => {
-    listOfGames().then((res) => {
-      setGamesData(res);
+    popular2025().then((filtered) => {
+      setNewGamesData(filtered);
 
-      console.log(res);
+      console.log(filtered);
     });
   }, []);
   return (
     <div>
-      {gamesData.length > 0 ? (
-        <div className="flex flex-wrap justify-center w-11/12 justify-self-center border gap-5">
-          {gamesData.map((val) => (
+      {(!newGamesData || newGamesData?.length == 0) ? (
+      
+        <div className="w-60 h-96 rounded-xl text-white">
+          <Skeleton variant="rectangular" width="100%" animation="wave" />
+        </div>
+      ) : (
+          <div className="flex border gap-5">
+          {newGamesData.map((val) => (
             <div
               key={val.id}
-              className=" hover:scale-105 hover:transition cursor-pointer"
+              className=" hover:scale-105 scale-90 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
-                    <img
-                      src={val.background_image}
+                     <img
+                      src={val.background_image} loading="lazy"
                       className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
                       alt=""
                     />
@@ -104,11 +111,12 @@ const GamingCard = ({ slug }) => {
             </div>
           ))}
         </div>
-      ) : (
-        <div className="text-white">Loading</div>
       )}
+       <div className="w-60 h-80 rounded-xl text-white border-white border-2">
+          <Skeleton variant="rectangular" width="100%" height="100%" animation="wave" />
+        </div>
     </div>
   );
 };
 
-export default GamingCard;
+export default NewReleaseCard;

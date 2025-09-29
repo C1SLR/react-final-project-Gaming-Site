@@ -2,6 +2,7 @@
 import HeroSection from "../herosection/HeroSection";
 import { IoSearch } from "react-icons/io5";
 import GamingCard from "../gaming card/GamingCard";
+import HomePage from "./Home page/HomePage";
 
 function GamingAPI() {
   return (
@@ -17,7 +18,7 @@ function GamingAPI() {
           <IoSearch />
         </button>
       </div>
-      <GamingCard />
+      <HomePage/>
     </div>
   );
 }

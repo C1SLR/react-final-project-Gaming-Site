@@ -1,5 +1,5 @@
-import { useEffect, useContext } from "react";
-import {listOfGames} from "../all api/Allapi";
+import {useState, useEffect, useContext } from "react";
+import { topRatedGames } from "../all api/Allapi";
 import { Link } from "react-router-dom";
 import { GameContext } from "../Context/Context";
 import { FaAndroid } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
 
-const GamingCard = ({ slug }) => {
+const TopRatedCard = ({ slug }) => {
   const platIcons = {
     pc: <IoDesktopSharp />,
     xbox: <FaXbox />,
@@ -21,27 +21,28 @@ const GamingCard = ({ slug }) => {
   };
 
   const { gamesData, setGamesData, Maturity } = useContext(GameContext);
+  const [ratedGames, setRatedGames] = useState([])
   useEffect(() => {
-    listOfGames().then((res) => {
-      setGamesData(res);
+    topRatedGames().then((filtered) => {
+      setRatedGames(filtered);
 
-      console.log(res);
+      // console.log(res);
     });
   }, []);
   return (
     <div>
-      {gamesData.length > 0 ? (
-        <div className="flex flex-wrap justify-center w-11/12 justify-self-center border gap-5">
-          {gamesData.map((val) => (
+      {ratedGames?.length > 0 ? (
+        <div className="flex border gap-5">
+          {ratedGames.map((val) => (
             <div
               key={val.id}
-              className=" hover:scale-105 hover:transition cursor-pointer"
+              className=" hover:scale-105 scale-90 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img
-                      src={val.background_image}
+                      src={val.background_image} loading="lazy"
                       className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
                       alt=""
                     />
@@ -111,4 +112,4 @@ const GamingCard = ({ slug }) => {
   );
 };
 
-export default GamingCard;
+export default TopRatedCard;
