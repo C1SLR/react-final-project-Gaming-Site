@@ -9,6 +9,9 @@ import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
 import Skeleton from "./Skeleton/Skeleton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 
 const MostPlayedCard = ({ slug }) => {
   const platIcons = {
@@ -40,8 +43,15 @@ const MostPlayedCard = ({ slug }) => {
           <Skeleton />
         </div>
       ) : (
-        <div className="flex border gap-5">
-          {mostPlayed.map((val) => (
+         <div className="flex border gap-4">
+            <Swiper spaceBetween={60}  slidesPerView={6}>
+              onSlideChange{()=> console.log('slide Change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+             
+          {mostPlayed?.map((val) => (
+
+            <SwiperSlide>
+
             <div
               key={val.id}
               className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
@@ -49,9 +59,10 @@ const MostPlayedCard = ({ slug }) => {
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
-                     <img
-                      src={val.background_image} loading="lazy"
-                      className="h-50 mask-b-from-60% mask-b-to-90% object-cover "
+                    <img
+                      src={val.background_image}
+                      loading="lazy"
+                      className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
                       alt=""
                     />
                     <div>
@@ -70,7 +81,12 @@ const MostPlayedCard = ({ slug }) => {
                             <p className="text-lg text-cyan-600">
                               {val.released?.split("-")[0]}
                             </p>
-                            <Rating name="half-rating-read" defaultValue={val.rating} precision={0.2} readOnly />
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={val.rating}
+                              precision={0.2}
+                              readOnly
+                            />
                           </div>
                         </div>
                       </div>
@@ -111,7 +127,10 @@ const MostPlayedCard = ({ slug }) => {
                 </Link>
               </div>
             </div>
+            </SwiperSlide>
           ))}
+             </Swiper>
+
         </div>
       )}
     </div>
