@@ -1,0 +1,57 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  return (
+    <div className="flex justify-center bg-gradient-to-b to-blue-700/70">
+      <div className="w-11/12">
+        <div>
+          <div className="flex gap-2 items-center cursor-pointer duration-500 ease-in text-gray-400 shadow-blue-30 p-2">
+            <img className="w-10" src="/Logo.png" alt="logo" />
+            <h1
+              className="text-3xl content-center bg-gradient-to-b bg-clip-text from-white-200/90 to-60% from-48% to-gray-400"
+              style={{ fontFamily: "Audiowide" }}
+            >
+              GameVerse
+            </h1>
+          </div>
+          <div className="text-white mx-15">
+            <ul>
+              <li>
+                <Link className="hover:text-blue-500 transition">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-blue-500 transition">About Us</Link>
+              </li>
+              <li>
+                <Link className="hover:text-blue-500 transition">
+                  Others Project
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-blue-500 transition">
+                  Coming Soon
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="p-5">
+          <p className="text-gray-200 text-center">
+            Allright Copyright © Reserved Powered By{" "}
+            <a
+              className="hover:text-sky-600 transition duration-1000"
+              href="https://github.com/C1SLR"
+            >
+              UMAR
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
