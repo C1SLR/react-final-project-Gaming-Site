@@ -10,21 +10,18 @@ export const listOfGames = async () => {
   const filtered = res.data.results.filter(
     (game) => game.esrb_rating && game.esrb_rating.slug !== "adults-only"
   );
-
-}
- export const popular2025 = async () => {
-  const start2025 = "2025-01-01"
-  const end2025 = "2025-12-31"
-    const res = await globalURL.get(
-      `/games?key=${key}&dates=${start2025},${end2025}&ordering=-added&page_size=40`
-    );
-    const filtered = res.data.results.filter(
-      (game) => game.rating > 0 && game.esrb_rating && game.playtime > 0
-    );
-    return filtered.slice(0, 6);
-  };
-
-
+};
+export const popular2025 = async () => {
+  const start2025 = "2025-01-01";
+  const end2025 = "2025-12-31";
+  const res = await globalURL.get(
+    `/games?key=${key}&dates=${start2025},${end2025}&ordering=-added&page_size=40`
+  );
+  const filtered = res.data.results.filter(
+    (game) => game.rating > 0 && game.esrb_rating && game.playtime > 0
+  );
+  return filtered.slice(0, 6);
+};
 
 export const mostPlayedGames = async () => {
   const res = await globalURL.get(

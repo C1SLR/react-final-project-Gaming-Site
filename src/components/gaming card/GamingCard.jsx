@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import {listOfGames} from "../all api/Allapi";
+import { listOfGames } from "../all api/Allapi";
 import { Link } from "react-router-dom";
 import { GameContext } from "../Context/Context";
 import { FaAndroid } from "react-icons/fa";
@@ -61,7 +61,12 @@ const GamingCard = ({ slug }) => {
                             <p className="text-lg text-cyan-600">
                               {val.released?.split("-")[0]}
                             </p>
-                            <Rating name="half-rating-read" defaultValue={val.rating} precision={0.2} readOnly />
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={val.rating}
+                              precision={0.2}
+                              readOnly
+                            />
                           </div>
                         </div>
                       </div>

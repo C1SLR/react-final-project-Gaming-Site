@@ -1,9 +1,9 @@
 function GameDetails({ game }) {
-    // if (!game || !game.min_spec) return <div>Loading...</div>;
+  // if (!game || !game.min_spec) return <div>Loading...</div>;
 
-    // Remove "Minimum:" at the start if it exists
-    let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
-      let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim();
+  // Remove "Minimum:" at the start if it exists
+  let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
+  let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim();
 
   //   const soundCardIndex = minSpec.indexOf("Sound Card:");
   //   if (soundCardIndex !== -1) {
@@ -75,7 +75,7 @@ function GameDetails({ game }) {
                 <h1 className="text-center text-4xl">MINIMUM</h1>
               </div>
               <div className="">
-                  <p>{minSpec || "No data available"}</p>
+                <p>{minSpec || "No data available"}</p>
                 {/* {lines.map((line, index) => (
                   <p key={index} className="">
                     {line}
@@ -89,7 +89,7 @@ function GameDetails({ game }) {
                 <h1 className="text-center text-4xl">RECOMMENDED</h1>
               </div>
               <div className=" ">
-                  <p>{recSpec || "No data available"}</p>
+                <p>{recSpec || "No data available"}</p>
                 {/* {recLines.map((recLine, i) => (
                   <p key={i} className="">
                     {recLine}

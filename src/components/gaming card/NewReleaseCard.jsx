@@ -27,7 +27,7 @@ const NewReleaseCard = ({ slug }) => {
     popular2025().then((filtered) => {
       setNewGamesData(filtered);
 
-      console.log(filtered);
+      // console.log(filtered);
     });
   }, []);
   return (
