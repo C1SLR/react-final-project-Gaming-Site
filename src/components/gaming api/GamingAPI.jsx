@@ -24,17 +24,17 @@ function GamingAPI() {
           <IoSearch />
         </button>
       </div>
-      <div className="p-10">
+      <div className="p-4 md:p-10 font-semibold text-3xl sm:text-4xl text-center sm:text-start">
         <div className="">
-            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Popular in 2025</h1>
+            <h1 className=" border-b-3 border-blue-900 p-5 text-white">Popular in 2025</h1>
             {popular2025Memo}
         </div>
         <div className="">
-            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Top Rated</h1>
+            <h1 className=" border-b-3 border-blue-900 p-5 text-white">Top Rated</h1>
             {topRatedMemo}
         </div>
         <div className="">
-            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Most Played</h1>
+            <h1 className=" border-b-3 border-blue-900 p-5 text-white">Most Played</h1>
             {mostPlayedMemo}
         </div>
         <div className="">

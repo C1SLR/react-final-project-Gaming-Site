@@ -44,10 +44,35 @@ const MostPlayedCard = ({ slug }) => {
         </div>
       ) : (
          <div className="flex border gap-4">
-            <Swiper spaceBetween={60}  slidesPerView={6}>
-              onSlideChange{()=> console.log('slide Change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-             
+            <Swiper
+            // slidesPerView={2}
+            // spaceBetween={10}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+               breakpoints={{
+              560: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 60,
+              },
+
+              1280: {
+                slidesPerView: 5,
+                spaceBetween: 80,
+              },
+            }}
+          >
           {mostPlayed?.map((val) => (
 
             <SwiperSlide>
@@ -56,7 +81,7 @@ const MostPlayedCard = ({ slug }) => {
               key={val.id}
               className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
             >
-              <div className="w-3xs py-5 text-white">
+              <div className="w-2xs md:3xs max-sm:w-9/12 py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img

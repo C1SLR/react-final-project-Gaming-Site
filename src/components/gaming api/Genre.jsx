@@ -13,12 +13,12 @@ function Genre() {
       
     },[])
     return(
-        <div className="flex justify-center w-full border text-white">
-            <div className="w-10/12 flex flex-wrap justify-center gap-10 p-10">
+        <div className="flex justify-center w-full text-white">
+            <div className="flex flex-wrap items-center justify-center gap-10 p-5">
            {genres.map((genre,index)=> (
 
             <div style={{backgroundImage:`url(${genre.image_background})`}} className= "w-80 border bg-no-repeat bg-cover rounded-3xl p-20" key={index}>
-                <h1 className="text-5xl text-center font-semibold">{genre.name}</h1>
+                <h1 className="text-4xl text-shadow-black text-shadow-[0_0_10px] font-semibold">{genre.name}</h1>
             </div>
 
            ))}

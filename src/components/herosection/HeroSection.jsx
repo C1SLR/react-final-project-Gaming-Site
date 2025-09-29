@@ -16,7 +16,7 @@ const HeroSection = () => {
   return (
     <div>
       {bannerPhoto.length > 0 ? (
-        <div className="w-8/12 justify-self-center mx-10 border-2 shadow">
+        <div className="w-full justify-self-center mx-10 border-2 shadow sm:w-10/12 lg:w-8/12">
           <Swiper
             pagination={true}
             modules={[Pagination]}
