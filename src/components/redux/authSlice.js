@@ -8,7 +8,7 @@ const authSlice = createSlice({
     isLoading: true,
   },
   reducers: {
-    setLoginState: (state, action) => {
+    setAuthState: (state, action) => {
       state.isLoggedIn = action.payload.isLoggedIn;
       state.user = action.payload.user;
       state.isLoading = action.payload.isLoading;
