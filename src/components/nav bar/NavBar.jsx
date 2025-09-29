@@ -1,11 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import SignIn from "../signin/SignIn";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 const NavBar = () => {
-  const { logibWithRedirect, logout } = useAuth0();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggerIn);
+  const { loginWithRedirect, logout } = useAuth0();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
   const isLoading = useSelector((state) => state.auth.isLoading);
   if (isLoading) {
@@ -48,13 +46,12 @@ const NavBar = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center">
-            <Link to="/signin">
-              <p>Sign In</p>
-            </Link>
-            <p>/</p>
-            <Link to={"/signup"}>
-            Sign Up
-            </Link>
+            <button
+              className="text-white hover:text-blue-500 duration-200"
+              onClick={() => loginWithRedirect()}
+            >
+              <p>Sign In / Sign Up</p>
+            </button>
           </div>
         )}
       </div>

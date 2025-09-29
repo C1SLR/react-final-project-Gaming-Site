@@ -4,8 +4,6 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import GamingAPI from "./components/gaming api/GamingAPI.jsx";
-import SignIn from "./components/signin/SignIn.jsx";
-import Signup from "./components/signin/Signup.jsx";
 import GamePage from "./components/Gaming Page/GamePage.jsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from "react-redux";
@@ -29,14 +27,6 @@ const router = createBrowserRouter([
         ),
       },
     ],
-  },
-  {
-    path: "/signin",
-    element: <SignIn />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
   },
 ]);
 

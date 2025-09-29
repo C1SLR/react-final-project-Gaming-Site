@@ -8,7 +8,7 @@ const LockedRoutes = ({ children }) => {
     return <div>wait the page is loading</div>;
   }
   if (!isLoggedIn) {
-    return <Navigate to="/signin" />;
+    return <Navigate to="/" />;
   }
   return children;
 };
