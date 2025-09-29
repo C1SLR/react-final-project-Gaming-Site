@@ -8,7 +8,7 @@ function Genre() {
     useEffect(() => {
         listOfGenres().then((popular) => {
             setGenres(popular); 
-            console.log(popular);
+            // console.log(popular);
         })
       
     },[])

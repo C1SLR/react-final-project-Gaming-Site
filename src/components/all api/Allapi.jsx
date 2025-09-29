@@ -13,14 +13,10 @@ export const listOfGames = async () => {
 };
 
 export const listOfGenres = async () => {
-  const res = await globalURL.get(
-    `/genres?key=${key}`
-  )
-  const popular = res.data.results.filter(
-    (genre) => genre.id < 6
-  );
+  const res = await globalURL.get(`/genres?key=${key}`);
+  const popular = res.data.results.filter((genre) => genre.id < 6);
   return popular;
-}
+};
 
 export const popular2025 = async () => {
   const start2025 = "2025-01-01";
@@ -71,4 +67,10 @@ export const gameDetails = async (gameSlug) => {
 export const screenShots = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}/screenshots?key=${key}`);
   return res.data.results;
+};
+
+export const searchapi = async (search) => {
+  const encoded = encodeURIComponent(search);
+  const res = await globalURL.get(`/games?key=${key}&search=${encoded}`);
+  return res.data.results
 };

@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import GamingAPI from "./components/gaming api/GamingAPI.jsx";
 import GamePage from "./components/Gaming Page/GamePage.jsx";
+import SearchGame from "./components/gaming card/SearchGames.jsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from "react-redux";
 import { store } from "./components/redux/store.js";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             <GamePage />
           </LockedRoutes>
         ),
+      },
+      {
+        path: "/search-results",
+        element: <SearchGame />,
       },
     ],
   },

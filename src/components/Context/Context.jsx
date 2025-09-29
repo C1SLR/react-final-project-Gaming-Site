@@ -8,6 +8,7 @@ export const GameProvider = ({ children }) => {
   const [gamesdetails, setGamesDetails] = useState([]);
   const [dlcGamesData, setDlcGamesData] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [searchGames, setSearchGames] = useState([]);
   const Maturity = {
     mature: <img src="/Mature.svg" alt="mature" />,
     "everyone-10-plus": <img src="/E10plus.svg" alt="mature" />,
@@ -40,7 +41,9 @@ export const GameProvider = ({ children }) => {
         setDlcGamesData,
         Maturity,
         genres,
-        setGenres
+        setGenres,
+        searchGames,
+        setSearchGames,
       }}
     >
       {children}
