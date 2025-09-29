@@ -8,6 +8,7 @@ import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
+import Skeleton from "./Skeleton/Skeleton";
 
 const MostPlayedCard = ({ slug }) => {
   const platIcons = {
@@ -25,25 +26,32 @@ const MostPlayedCard = ({ slug }) => {
   useEffect(() => {
     mostPlayedGames().then((sorted) => {
       setMostPlayed(sorted);
-
-      // console.log(res);
     });
   }, []);
   return (
     <div>
-      {mostPlayed?.length > 0 ? (
+      {!mostPlayed || mostPlayed?.length === 0 ? (
+          <div className="flex gap-4 py-10 justify-evenly">
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
+      ) : (
         <div className="flex border gap-5">
           {mostPlayed.map((val) => (
             <div
               key={val.id}
-              className=" hover:scale-105 scale-90 hover:transition cursor-pointer"
+              className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                      <img
                       src={val.background_image} loading="lazy"
-                      className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
+                      className="h-50 mask-b-from-60% mask-b-to-90% object-cover "
                       alt=""
                     />
                     <div>
@@ -105,8 +113,6 @@ const MostPlayedCard = ({ slug }) => {
             </div>
           ))}
         </div>
-      ) : (
-        <div className="text-white">Loading</div>
       )}
     </div>
   );

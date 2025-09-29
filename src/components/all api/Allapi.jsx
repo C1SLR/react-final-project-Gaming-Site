@@ -11,6 +11,17 @@ export const listOfGames = async () => {
     (game) => game.esrb_rating && game.esrb_rating.slug !== "adults-only"
   );
 };
+
+export const listOfGenres = async () => {
+  const res = await globalURL.get(
+    `/genres?key=${key}`
+  )
+  const popular = res.data.results.filter(
+    (genre) => genre.id < 6
+  );
+  return popular;
+}
+
 export const popular2025 = async () => {
   const start2025 = "2025-01-01";
   const end2025 = "2025-12-31";
@@ -20,7 +31,7 @@ export const popular2025 = async () => {
   const filtered = res.data.results.filter(
     (game) => game.rating > 0 && game.esrb_rating && game.playtime > 0
   );
-  return filtered.slice(0, 6);
+  return filtered.slice(0, 9);
 };
 
 export const mostPlayedGames = async () => {
@@ -53,10 +64,10 @@ export const gameDetails = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}?key=${key}`);
   return res.data;
 };
-export const listOfDlcGames = async (gameSlug) => {
-  const res = await globalURL.get(`/games/${gameSlug}/additions?key=${key}`);
-  return res.data;
-};
+// export const listOfDlcGames = async (gameSlug) => {
+//   const res = await globalURL.get(`/games/${gameSlug}/additions?key=${key}`);
+//   return res.data;
+// };
 export const screenShots = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}/screenshots?key=${key}`);
   return res.data.results;

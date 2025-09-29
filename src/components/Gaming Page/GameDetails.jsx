@@ -1,43 +1,10 @@
 function GameDetails({ game }) {
-  // if (!game || !game.min_spec) return <div>Loading...</div>;
 
-  // Remove "Minimum:" at the start if it exists
-  let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
-  let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim();
+    let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
+      let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim();
 
-  //   const soundCardIndex = minSpec.indexOf("Sound Card:");
-  //   if (soundCardIndex !== -1) {
-  //     minSpec = minSpec.slice(0, soundCardIndex).trim();
-  //   }
 
-  //   const soundCardIndexRec = recSpec.indexOf("Sound Card:");
-  //   if (soundCardIndexRec !== -1) {
-  //     recSpec = recSpec.slice(0, soundCardIndexRec).trim();
-  //   }
-  //   // Add a newline before common section headings
-  //   const formattedSpec = minSpec
-  //     .replace(/OS:/g, "\nOS:")
-  //     .replace(/Processor:/g, "\nProcessor:")
-  //     .replace(/Memory:/g, "\nMemory:")
-  //     .replace(/Graphics:/g, "\nGraphics:")
-  //     .replace(/Storage:/g, "\nStorage:");
-
-  //     const formattedRecSpec = recSpec
-  //     .replace(/OS:/g, "\nOS:")
-  //     .replace(/Processor:/g, "\nProcessor:")
-  //     .replace(/Memory:/g, "\nMemory:")
-  //     .replace(/Graphics:/g, "\nGraphics:")
-  //     .replace(/Storage:/g, "\nStorage:");
-
-  //   const recLines =  formattedRecSpec
-  //    .split("\n")
-  //     .map((recLine) => recLine.trim())
-  //     .filter((recLine) => recLine);
-  //   const lines = formattedSpec
-  //     .split("\n")
-  //     .map((line) => line.trim())
-  //     .filter((line) => line);
-
+ 
   return (
     <>
       <div className="flex flex-col gap-4 ">

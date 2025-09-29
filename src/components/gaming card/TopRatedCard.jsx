@@ -8,6 +8,8 @@ import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
+import Skeleton from "./Skeleton/Skeleton";
+
 
 const TopRatedCard = ({ slug }) => {
   const platIcons = {
@@ -20,23 +22,30 @@ const TopRatedCard = ({ slug }) => {
     android: <FaAndroid />,
   };
 
-  const { gamesData, setGamesData, Maturity } = useContext(GameContext);
+  const {Maturity } = useContext(GameContext);
   const [ratedGames, setRatedGames] = useState([])
   useEffect(() => {
     topRatedGames().then((filtered) => {
       setRatedGames(filtered);
-
-      // console.log(res);
     });
   }, []);
   return (
     <div>
-      {ratedGames?.length > 0 ? (
+      {!ratedGames || ratedGames?.length === 0 ? (
+          <div className="flex gap-4 py-10 justify-evenly">
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
+      ) : (
         <div className="flex border gap-5">
           {ratedGames.map((val) => (
             <div
               key={val.id}
-              className=" hover:scale-105 scale-90 hover:transition cursor-pointer"
+              className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
@@ -105,8 +114,6 @@ const TopRatedCard = ({ slug }) => {
             </div>
           ))}
         </div>
-      ) : (
-        <div className="text-white">Loading</div>
       )}
     </div>
   );

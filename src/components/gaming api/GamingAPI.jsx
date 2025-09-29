@@ -1,10 +1,16 @@
 
+import { useMemo } from "react";
 import HeroSection from "../herosection/HeroSection";
 import { IoSearch } from "react-icons/io5";
-import GamingCard from "../gaming card/GamingCard";
-import HomePage from "./Home page/HomePage";
+import NewReleaseCard from "../gaming card/NewReleaseCard";
+import TopRatedCard from "../gaming card/TopRatedCard";
+import MostPlayedCard from "../gaming card/MostPlayedCard";
+import Genre from "./Genre";
 
 function GamingAPI() {
+  const popular2025Memo = useMemo(() => <NewReleaseCard />, []);
+  const topRatedMemo = useMemo(() => <TopRatedCard />, []);
+  const mostPlayedMemo = useMemo(() => <MostPlayedCard />, []);
   return (
     <div>
       <HeroSection />
@@ -18,7 +24,25 @@ function GamingAPI() {
           <IoSearch />
         </button>
       </div>
-      <HomePage/>
+      <div className="p-10">
+        <div className="">
+            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Popular in 2025</h1>
+            {popular2025Memo}
+        </div>
+        <div className="">
+            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Top Rated</h1>
+            {topRatedMemo}
+        </div>
+        <div className="">
+            <h1 className="text-4xl border-b-3 border-blue-900 p-5 text-white">Most Played</h1>
+            {mostPlayedMemo}
+        </div>
+        <div className="">
+            <h1 className="text-4xl text-center border-b-3 border-blue-900 p-5 text-white">Genres</h1>
+            <Genre/>
+        </div>
+      </div>
+      
     </div>
   );
 }

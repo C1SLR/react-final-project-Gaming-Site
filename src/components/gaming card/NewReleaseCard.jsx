@@ -8,7 +8,9 @@ import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
-import Skeleton from "@mui/material/Skeleton";
+import Skeleton from "./Skeleton/Skeleton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const NewReleaseCard = ({ slug }) => {
   const platIcons = {
@@ -22,7 +24,7 @@ const NewReleaseCard = ({ slug }) => {
   };
 
   const { Maturity } = useContext(GameContext);
-  const [ newGamesData, setNewGamesData,] = useState([])
+  const [newGamesData, setNewGamesData] = useState([]);
   useEffect(() => {
     popular2025().then((filtered) => {
       setNewGamesData(filtered);
@@ -32,23 +34,35 @@ const NewReleaseCard = ({ slug }) => {
   }, []);
   return (
     <div>
-      {(!newGamesData || newGamesData?.length == 0) ? (
-      
-        <div className="w-60 h-96 rounded-xl text-white">
-          <Skeleton variant="rectangular" width="100%" animation="wave" />
+      {!newGamesData || newGamesData?.length == 0 ? (
+         <div className="flex gap-4 py-10 justify-evenly">
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
         </div>
       ) : (
-          <div className="flex border gap-5">
+        <div className="flex border gap-4">
+            <Swiper spaceBetween={60}  slidesPerView={6}>
+              onSlideChange{()=> console.log('slide Change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+             
           {newGamesData.map((val) => (
+
+            <SwiperSlide>
+
             <div
               key={val.id}
-              className=" hover:scale-105 scale-90 hover:transition cursor-pointer"
+              className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
             >
               <div className="w-3xs py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
-                     <img
-                      src={val.background_image} loading="lazy"
+                    <img
+                      src={val.background_image}
+                      loading="lazy"
                       className="h-50 w-full mask-b-from-60% mask-b-to-95% object-cover "
                       alt=""
                     />
@@ -68,7 +82,12 @@ const NewReleaseCard = ({ slug }) => {
                             <p className="text-lg text-cyan-600">
                               {val.released?.split("-")[0]}
                             </p>
-                            <Rating name="half-rating-read" defaultValue={val.rating} precision={0.2} readOnly />
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={val.rating}
+                              precision={0.2}
+                              readOnly
+                            />
                           </div>
                         </div>
                       </div>
@@ -109,12 +128,12 @@ const NewReleaseCard = ({ slug }) => {
                 </Link>
               </div>
             </div>
+            </SwiperSlide>
           ))}
+             </Swiper>
+
         </div>
       )}
-       <div className="w-60 h-80 rounded-xl text-white border-white border-2">
-          <Skeleton variant="rectangular" width="100%" height="100%" animation="wave" />
-        </div>
     </div>
   );
 };
