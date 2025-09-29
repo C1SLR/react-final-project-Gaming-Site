@@ -13,7 +13,6 @@ export const useAuthSync = () => {
         user: user || null,
         isLoading: isLoading,
       })
-    ),
-      [isAuthenticated, user, isLoading, dispatch];
-  });
+    );
+  }, [isAuthenticated, user, isLoading, dispatch]);
 };
