@@ -49,6 +49,7 @@ const NavBar = () => {
             <button
               className="text-white hover:text-blue-500 duration-200"
               onClick={() => loginWithRedirect()}
+              type="button"
             >
               <p>Sign In / Sign Up</p>
             </button>
