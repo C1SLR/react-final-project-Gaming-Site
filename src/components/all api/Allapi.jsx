@@ -1,5 +1,5 @@
 import axios from "axios";
-const key = import.meta.env.VITE_API_KEY;
+const key = import.meta.env.VITE_GAMING_API;
 const globalURL = axios.create({
   baseURL: "https://api.rawg.io/api",
 });
