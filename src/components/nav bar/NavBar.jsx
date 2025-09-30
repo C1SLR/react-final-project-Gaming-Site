@@ -79,7 +79,7 @@ const NavBar = () => {
                 <MobileNav />
               ) : (
                 <button
-                  className="md:hidden flex cursor-pointer p-5"
+                  className="md:hidden flex cursor-pointer p-3"
                   onClick={toggleButton}
                 >
                   <MenuIcon />
@@ -99,7 +99,7 @@ const NavBar = () => {
                 <MobileNav />
               ) : (
                 <button
-                  className="md:hidden flex cursor-pointer p-5"
+                  className="md:hidden flex cursor-pointer p-3"
                   onClick={toggleButton}
                 >
                   <MenuIcon />
