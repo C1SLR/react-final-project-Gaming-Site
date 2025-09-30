@@ -1,17 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import { GameContext } from "../Context/Context";
-import {screenShots, gameDetails } from "../all api/Allapi";
+import { useEffect, useState } from "react";
+import { screenShots, gameDetails } from "../all api/Allapi";
 import { useParams } from "react-router-dom";
 import GameHero from "./GameHero";
 import GameDetails from "./GameDetails";
 import Screenshots from "./Screenshots";
 function GamePage({}) {
   const { slug } = useParams();
-  // const { setDlcGamesData } = useContext(GameContext);
   const [details, setDetails] = useState({});
   const [gamePic, setGamePic] = useState([]);
   useEffect(() => {
-   
     const titleCase = (string) => {
       return string
         .split(" ")
@@ -22,13 +19,11 @@ function GamePage({}) {
       // listOfDlcGames(slug).then((res) => {
       //   // console.log(res);
       //   setDlcGamesData(res);
-       
+
       // });
       gameDetails(slug).then((res) => {
-        const pcPlatform = res.platforms.find(
-          (plat) => plat.platform.id === 4
-        );
-        console.log("Game details =>>>>", res);
+        const pcPlatform = res.platforms.find((plat) => plat.platform.id === 4);
+        // console.log("Game details =>>>>", res);
         setDetails({
           name: res.name,
           released: res.released,
@@ -43,10 +38,10 @@ function GamePage({}) {
           rec_spec: pcPlatform?.requirements?.recommended,
         });
       });
-       screenShots(slug).then((res) => {
-          setGamePic(res);
-          console.log(res);
-        });
+      screenShots(slug).then((res) => {
+        setGamePic(res);
+        console.log(res);
+      });
     }
     window.scrollTo(0, 0);
   }, [slug]);

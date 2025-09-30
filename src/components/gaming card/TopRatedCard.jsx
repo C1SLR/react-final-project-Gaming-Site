@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 
-const TopRatedCard = ({ slug }) => {
+const TopRatedCard = () => {
   const platIcons = {
     pc: <IoDesktopSharp />,
     xbox: <FaXbox />,
@@ -31,10 +31,10 @@ const TopRatedCard = ({ slug }) => {
       setRatedGames(filtered);
     });
   }, []);
-  return (
+ return (
     <div>
       {!ratedGames || ratedGames?.length === 0 ? (
-          <div className="flex gap-4 py-10 justify-evenly">
+          <div className="flex gap-4 py-10 justify-center">
           <Skeleton />
           <Skeleton />
           <Skeleton />
@@ -43,19 +43,18 @@ const TopRatedCard = ({ slug }) => {
           <Skeleton />
         </div>
       ) : (
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-center">
            <Swiper
            slidesPerView={1}
+           spaceBetween={15}
 
            breakpoints={{
+            
               560: {
                 slidesPerView: 2,
-                                spaceBetween: 10,
 
               },
-              640: {
-                slidesPerView: 2,
-              },
+              
               768: {
                 slidesPerView: 3,
               },
@@ -77,11 +76,11 @@ const TopRatedCard = ({ slug }) => {
 
             <div
               key={val.id}
-              className=" hover:scale-100 md:scale-93 hover:transition cursor-pointer"
+              className="  hover:scale-100 md:scale-93 transition ease-in-out duration-300 cursor-pointer"
             >
-              <div className="w-full  md:3xs flex justify-center py-5 text-white">
+              <div className="max-sm:flex justify-center sm:w-[40] py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
-                  <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
+                  <div className="bg-black rounded-xl bg-radial-[at_99%_90%] hover:from-blue-600/80 hover:via-65% transition ease-in-out from-blue-700/70 via-55% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img
                       src={val.background_image}
                       loading="lazy"
@@ -90,7 +89,7 @@ const TopRatedCard = ({ slug }) => {
                     />
                     <div>
                       <div>
-                        <h1 className="text-center h-10 text-lg text-gray-200 font-medium">
+                        <h1 className="text-center transition-all duration-100 ease-in-out hover:text-shadow-[0_0_10px] h-10 text-lg text-gray-200 font-medium">
                           {val.name}
                         </h1>
                       </div>
@@ -123,15 +122,7 @@ const TopRatedCard = ({ slug }) => {
                               {val.genres[0]?.name}
                             </p>
                             <div className=" flex gap-1  text-2xl">
-                              {/* <span>
-                            <IoDesktopSharp />
-                          </span>
-                          <span>
-                            <FaPlaystation />
-                          </span>
-                          <span>
-                            <FaXbox />
-                          </span> */}
+                             
                               {val.parent_platforms?.map((plat) => (
                                 <span key={plat.platform?.id}>
                                   {platIcons[plat.platform?.slug] || "N/A"}
