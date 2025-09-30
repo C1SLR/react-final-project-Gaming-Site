@@ -78,7 +78,7 @@ const NewReleaseCard = () => {
               key={val.id}
               className="  hover:scale-100 md:scale-93 transition ease-in-out duration-300 cursor-pointer"
             >
-              <div className="max-sm:flex justify-center sm:w-[40] py-5 text-white">
+              <div className="max-sm:flex justify-center py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] hover:from-blue-600/80 hover:via-65% transition ease-in-out from-blue-700/70 via-55% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img
