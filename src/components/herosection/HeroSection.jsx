@@ -14,7 +14,7 @@ const HeroSection = () => {
   }, []);
   return (
     <div>
-      <h1 className="text-white/80 text-8xl text-center font-customTwo mb-10 my-5">
+      <h1 className="xl:text-8xl lg:text-6xl text-4xl text-white/80 text-center font-customTwo mb-10 my-5">
         Leading Gaming Industry
       </h1>
       {bannerPhoto.length > 0 ? (
@@ -29,7 +29,7 @@ const HeroSection = () => {
                 <div className="relative">
                   <img src={val.background_image} alt="notfound" />
                   <div className="absolute bottom-0 left-0 rounded bg-gradient-to-t from-black/80 to-transparent p-5">
-                    <p className="font-customOne text-4xl text-shadow-black text-gray-200/80 capitalize">
+                    <p className="md:text-4xl text-3xl font-customOne  text-shadow-black text-gray-200/80 capitalize">
                       {val.slug}
                     </p>
                   </div>
