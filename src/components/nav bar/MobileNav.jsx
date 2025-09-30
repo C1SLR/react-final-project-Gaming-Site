@@ -10,8 +10,6 @@ const MobileNav = () => {
   const { loginWithRedirect, logout } = useAuth0();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
-  //   const isLoading = useSelector((state) => state.auth.isLoading);
-
   const toggleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -22,13 +20,14 @@ const MobileNav = () => {
     logout({ logoutParams: { returnTo: window.location.origin } });
   };
   return (
-    <div className="absolute w-8/12 bg-black rounded top-0 right-1">
+    <div className="absolute w-full bg-black rounded top-0 right-1">
       {isLoggedIn ? (
         <div>
           {isOpen ? (
             <div>
               <div className="flex justify-between p-2">
-                <div className="p-1">
+                <div className="p-1 flex gap-2">
+                  <img src="/Logo.png" alt="logo" className="w-8" />
                   <p>GameVerse</p>
                 </div>
                 <button
@@ -39,7 +38,7 @@ const MobileNav = () => {
                 </button>
               </div>
               <div className="flex justify-between mx-5">
-                <span className="font-bold">{user?.name}user</span>
+                <span className="font-bold">{user?.name}</span>
                 <img
                   src={user?.picture}
                   alt={user?.name || "User Profile"}
@@ -47,13 +46,13 @@ const MobileNav = () => {
                 />
               </div>
               <ul className="justify-center items-center w-full">
-                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                   <Link to="/">Home</Link>
                 </li>
-                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                   <Link to="/">Contact Us</Link>
                 </li>
-                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                   <Link>Categories</Link>
                 </li>
               </ul>
@@ -73,7 +72,8 @@ const MobileNav = () => {
           {isOpen ? (
             <div>
               <div className="flex justify-between p-2">
-                <div className="p-1">
+                <div className="p-1 flex gap-2">
+                  <img src="/Logo.png" alt="logo" className="w-8" />
                   <p>GameVerse</p>
                 </div>
                 <button
@@ -85,13 +85,13 @@ const MobileNav = () => {
               </div>
               <div className="flex items-center  w-full">
                 <ul className="justify-center items-center w-full">
-                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                     <Link to="/">Home</Link>
                   </li>
-                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                     <Link to="/">Contact Us</Link>
                   </li>
-                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2">
+                  <li className="active:bg-gray-500 active:shadow-[0_2px] transition pl-5 p-2 my-2">
                     <Link>Categories</Link>
                   </li>
                 </ul>
