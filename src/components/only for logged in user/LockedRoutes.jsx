@@ -8,6 +8,7 @@ const LockedRoutes = ({ children }) => {
     return <div>wait the page is loading</div>;
   }
   if (!isLoggedIn) {
+    alert("Please Login First To Access That Data")
     return <Navigate to="/" />;
   }
   return children;

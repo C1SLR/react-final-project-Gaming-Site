@@ -8,11 +8,11 @@ function App() {
   useAuthSync();
   return (
     <div className="bg-black/92">
-      <NavBar />
       <GameProvider>
+        <NavBar />
         <Outlet />
+        <Footer />
       </GameProvider>
-      <Footer />
     </div>
   );
 }
