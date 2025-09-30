@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="flex justify-center bg-gradient-to-b to-blue-700/70 from-20%">
-      <div className="w-11/12">
-        <div className="flex justify-between">
+      <div className="w-11/12 max-md:w-full">
+        <div className="flex justify-between max-md:text-center max-md:flex-col">
           <div className="w-full">
-            <div className="flex gap-2 items-center cursor-pointer duration-500 ease-in text-gray-400 shadow-blue-30 p-2">
+            <div className="flex max-md:justify-center gap-2 items-center cursor-pointer duration-500 ease-in text-gray-400 shadow-blue-30 p-2">
               <img className="w-10" src="/Logo.png" alt="logo" />
               <h1
                 className="text-3xl content-center bg-gradient-to-b bg-clip-text from-white-200/90 to-60% from-48% to-gray-400"
@@ -16,7 +16,7 @@ const Footer = () => {
                 GameVerse
               </h1>
             </div>
-            <div className="text-white mx-15">
+            <div className="text-white">
               <ul>
                 <li>
                   <Link className="hover:text-blue-500 transition">
@@ -67,7 +67,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="p-5 flex justify-center">
-          <span className="text-gray-200 flex gap-1">
+          <span className="text-gray-200 flex max-md:flex-col max-md:text-center gap-1">
             Allright Copyright © Reserved Powered By{" "}
             <a
               className="hover:text-sky-600 transition duration-1000"
