@@ -47,7 +47,7 @@ function GamePage({}) {
   }, [slug]);
   return (
     <>
-      <div className="mx-40">
+      <div className=" lg:px-15">
         <GameHero game={details} />
         <GameDetails game={details} />
         <Screenshots picture={gamePic} />
