@@ -10,7 +10,6 @@ const HeroSection = () => {
   useEffect(() => {
     popularGamesBanner().then((res) => {
       setBannerPhoto(res);
-      // console.log(res);
     });
   }, []);
   return (

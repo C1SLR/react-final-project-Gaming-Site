@@ -43,31 +43,27 @@ const TopRatedCard = ({ slug }) => {
           <Skeleton />
         </div>
       ) : (
-        <div className="flex border gap-4">
+        <div className="flex gap-4">
            <Swiper
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+           slidesPerView={1}
+
            breakpoints={{
               560: {
-                slidesPerView: 1,
-                spaceBetween: 10,
+                slidesPerView: 2,
               },
               640: {
                 slidesPerView: 2,
-                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 50,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 60,
               },
 
               1280: {
                 slidesPerView: 5,
-                spaceBetween: 80,
+                
               },
             }}
           >
@@ -79,9 +75,9 @@ const TopRatedCard = ({ slug }) => {
 
             <div
               key={val.id}
-              className=" hover:scale-100 scale-93 hover:transition cursor-pointer"
+              className=" hover:scale-100 md:scale-93 hover:transition cursor-pointer"
             >
-              <div className="w-2xs md:3xs max-sm:w-9/12 py-5 text-white">
+              <div className="w-full  md:3xs flex justify-center py-5 text-white">
                 <Link to={`/game-details/${val.slug}`}>
                   <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
                     <img

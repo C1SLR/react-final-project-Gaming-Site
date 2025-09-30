@@ -10,7 +10,6 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import Rating from "@mui/material/Rating";
 import Skeleton from "./Skeleton/Skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Pagination } from 'swiper/modules';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -32,12 +31,12 @@ const NewReleaseCard = ({ slug }) => {
     popular2025().then((filtered) => {
       setNewGamesData(filtered);
 
-      // console.log(filtered);
     });
   }, []);
   return (
     <div>
       {!newGamesData || newGamesData?.length == 0 ? (
+        
         <div className="flex gap-4 py-10 justify-evenly">
           <Skeleton />
           <Skeleton />
@@ -47,31 +46,27 @@ const NewReleaseCard = ({ slug }) => {
           <Skeleton />
         </div>
       ) : (
-        <div className="flex">
+        <div className="flex gap-4">
           <Swiper
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-            breakpoints={{
+           slidesPerView={1}
+
+           breakpoints={{
               560: {
-                slidesPerView: 1,
-                spaceBetween: 10,
+                slidesPerView: 2,
               },
               640: {
                 slidesPerView: 2,
-                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 50,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 60,
               },
 
               1280: {
                 slidesPerView: 5,
-                spaceBetween: 80,
+                
               },
             }}
           >
@@ -79,11 +74,11 @@ const NewReleaseCard = ({ slug }) => {
               <SwiperSlide>
                 <div
                   key={val.id}
-                  className=" hover:scale-100 md:scale-93 hover:transition cursor-pointer"
+                  className=" hover:scale-100 md:scale-93 transition ease-in-out duration-300 cursor-pointer"
                 >
-                  <div className="w-2xs md:3xs max-sm:w-9/12 py-5 text-white">
+                  <div className="w-full md:3xs flex justify-center py-5 text-white">
                     <Link to={`/game-details/${val.slug}`}>
-                      <div className="bg-black rounded-xl bg-radial-[at_99%_90%] from-blue-700/70 via-55% from-10/% via-blue-900/30 overflow-hidden shadow-lg h-full">
+                      <div className="bg-black rounded-xl bg-radial-[at_99%_90%] hover:from-blue-600/80 hover:via-65% transition ease-in-out from-blue-700/70 via-55% via-blue-900/30 overflow-hidden shadow-lg h-full">
                         <img
                           src={val.background_image}
                           loading="lazy"
@@ -92,7 +87,7 @@ const NewReleaseCard = ({ slug }) => {
                         />
                         <div>
                           <div>
-                            <h1 className="text-center h-10 text-lg text-gray-200 font-medium">
+                            <h1 className="text-center transition-all duration-100 ease-in-out hover:text-shadow-[0_0_10px] h-10 text-lg text-gray-200 font-medium">
                               {val.name}
                             </h1>
                           </div>

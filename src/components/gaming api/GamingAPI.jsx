@@ -24,7 +24,7 @@ function GamingAPI() {
       navigate("/search-results", {
         state: { searchedGames: res, query: searchGames },
       });
-      console.log(res);
+      // console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -36,13 +36,12 @@ function GamingAPI() {
         <input
           type="text"
           placeholder="Search Here"
-          className="bg-white/30 w-full p-2 text-white focus:outline-0 rounded-l-md"
-          onChange={(e) => {
+className="bg-gray-900 w-full p-3 text-white border focus:outline-0 rounded-full"          onChange={(e) => {
             setSearchGames(e.target.value);
           }}
         />
         <button
-          className="bg-white/30 px-5 py-3 cursor-pointer rounded-r-md"
+          className="bg-linear-0 hover:to-blue-600 transition delay-100 ease-in-out  to-blue-800 text-white px-5 relative right-14 py-4 border cursor-pointer rounded-r-full border-l-0"
           onClick={searchHandler}
         >
           <IoSearch />
