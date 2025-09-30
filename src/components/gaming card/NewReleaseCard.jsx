@@ -53,6 +53,8 @@ const NewReleaseCard = ({ slug }) => {
            breakpoints={{
               560: {
                 slidesPerView: 2,
+                                spaceBetween: 10,
+
               },
               640: {
                 slidesPerView: 2,
