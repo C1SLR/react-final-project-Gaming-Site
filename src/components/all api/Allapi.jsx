@@ -72,5 +72,7 @@ export const screenShots = async (gameSlug) => {
 export const searchapi = async (search) => {
   const encoded = encodeURIComponent(search);
   const res = await globalURL.get(`/games?key=${key}&search=${encoded}`);
-  return res.data.results
+  console.log(res.data.results);
+
+  return res.data.results;
 };

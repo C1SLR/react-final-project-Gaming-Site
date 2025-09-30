@@ -23,7 +23,7 @@ function GamePage({}) {
       // });
       gameDetails(slug).then((res) => {
         const pcPlatform = res.platforms.find((plat) => plat.platform.id === 4);
-        console.log("Game details =>>>>", res);
+        // console.log("Game details =>>>>", res);
         setDetails({
           name: res.name,
           released: res.released,
