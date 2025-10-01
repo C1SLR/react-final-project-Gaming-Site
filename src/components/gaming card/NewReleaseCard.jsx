@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import {useState, useEffect, useContext } from "react";
 import { popular2025 } from "../all api/Allapi";
 import { Link } from "react-router-dom";
 import { GameContext } from "../Context/Context";
@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 
+
 const NewReleaseCard = () => {
   const platIcons = {
     pc: <IoDesktopSharp />,
@@ -24,7 +25,7 @@ const NewReleaseCard = () => {
     android: <FaAndroid />,
   };
 
-  const { Maturity } = useContext(GameContext);
+  const { Maturity, playHover, playClick } = useContext(GameContext);
   const [newGamesData, setNewGamesData] = useState([]);
   useEffect(() => {
     popular2025().then((filtered) => {
@@ -73,8 +74,8 @@ const NewReleaseCard = () => {
           {newGamesData?.map((val) => (
 
             <SwiperSlide>
-
             <div
+            onMouseEnter={playHover} onClick={playClick}
               key={val.id}
               className="  hover:scale-100 md:scale-93 transition ease-in-out duration-300 cursor-pointer"
             >

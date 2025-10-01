@@ -3,6 +3,14 @@ import { createContext, useState } from "react";
 export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
+    const playHover = () => {
+      const hover = new Audio("/sfx.wav");
+     hover.play();
+    }
+  const playClick = () => {
+    const click = new Audio("/click.wav")
+    click.play();
+  }
   const [gamesData, setGamesData] = useState([]);
   const [bannerPhoto, setBannerPhoto] = useState([]);
   const [gamesdetails, setGamesDetails] = useState([]);
@@ -29,6 +37,7 @@ export const GameProvider = ({ children }) => {
     ),
   };
 
+
   return (
     <GameContext.Provider
       value={{
@@ -47,6 +56,8 @@ export const GameProvider = ({ children }) => {
         setSearchGames,
         isOpen,
         setIsOpen,
+        playHover,
+        playClick
       }}
     >
       {children}

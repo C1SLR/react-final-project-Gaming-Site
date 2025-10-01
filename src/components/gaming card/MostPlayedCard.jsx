@@ -23,7 +23,7 @@ const MostPlayedCard = () => {
     android: <FaAndroid />,
   };
 
-  const { Maturity } = useContext(GameContext);
+  const { Maturity, playHover,playClick } = useContext(GameContext);
   const [mostPlayed, setMostPlayed] = useState([]);
   useEffect(() => {
     mostPlayedGames().then((sorted) => {
@@ -74,6 +74,7 @@ const MostPlayedCard = () => {
             <SwiperSlide>
 
             <div
+            onMouseEnter={playHover} onClick={playClick}
               key={val.id}
               className="  hover:scale-100 md:scale-93 transition ease-in-out duration-300 cursor-pointer"
             >

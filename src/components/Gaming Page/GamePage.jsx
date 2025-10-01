@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import GameHero from "./GameHero";
 import GameDetails from "./GameDetails";
 import Screenshots from "./Screenshots";
+import AboutGame from "./AboutGame";
 function GamePage({}) {
   const { slug } = useParams();
   const [details, setDetails] = useState({});
@@ -23,9 +24,10 @@ function GamePage({}) {
       // });
       gameDetails(slug).then((res) => {
         const pcPlatform = res.platforms.find((plat) => plat.platform.id === 4);
-        // console.log("Game details =>>>>", res);
+        console.log("Game details =>>>>", res);
         setDetails({
           name: res.name,
+          desc: res.description_raw,
           released: res.released,
           developers: res.developers.map((dev) => dev.name),
           rating: res.rating,
@@ -34,13 +36,14 @@ function GamePage({}) {
           tags: res.tags.map((tag) => titleCase(tag.name)),
           publisher: res.publishers[0].name,
           img: res.background_image,
+          img2: res.background_image_additional,
           min_spec: pcPlatform?.requirements?.minimum,
           rec_spec: pcPlatform?.requirements?.recommended,
         });
       });
       screenShots(slug).then((res) => {
         setGamePic(res);
-        console.log(res);
+        // console.log(res);
       });
     }
     window.scrollTo(0, 0);
@@ -50,6 +53,7 @@ function GamePage({}) {
       <div className=" lg:px-15">
         <GameHero game={details} />
         <GameDetails game={details} />
+        <AboutGame game={details} />
         <Screenshots picture={gamePic} />
       </div>
     </>

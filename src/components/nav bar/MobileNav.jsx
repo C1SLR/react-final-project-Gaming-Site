@@ -72,10 +72,13 @@ const MobileNav = () => {
           {isOpen ? (
             <div>
               <div className="flex justify-between p-2">
+                <Link to="/">
+
                 <div className="p-1 flex gap-2">
                   <img src="/Logo.png" alt="logo" className="w-8" />
                   <p>GameVerse</p>
                 </div>
+                </Link>
                 <button
                   onClick={toggleClose}
                   className="hover:bg-gray-500 rounded"

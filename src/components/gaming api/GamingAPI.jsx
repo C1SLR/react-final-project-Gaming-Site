@@ -10,6 +10,7 @@ import { searchapi } from "../all api/Allapi";
 import { useNavigate } from "react-router-dom";
 
 function GamingAPI() {
+  
   const navigate = useNavigate();
   const { searchGames, setSearchGames } = useContext(GameContext);
   const popular2025Memo = useMemo(() => <NewReleaseCard />, []);
@@ -50,7 +51,7 @@ function GamingAPI() {
       </div>
       <div className="p-4 md:p-10 font-semibold text-3xl sm:text-4xl text-center sm:text-start">
         <div className="">
-          <h1 className=" border-b-3 border-blue-900 p-5 text-white">
+          <h1  className="border-b-3 border-blue-900 p-5 text-white">
             Popular in 2025
           </h1>
           {popular2025Memo}

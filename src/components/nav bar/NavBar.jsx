@@ -6,7 +6,7 @@ import { GameContext } from "../Context/Context";
 import MenuIcon from "@mui/icons-material/Menu";
 import MobileNav from "./MobileNav";
 const NavBar = () => {
-  const { isOpen, setIsOpen } = useContext(GameContext);
+  const { isOpen, setIsOpen, playClick} = useContext(GameContext);
   const { loginWithRedirect, logout } = useAuth0();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
@@ -28,21 +28,21 @@ const NavBar = () => {
   return (
     <div className=" flex justify-center bg-gradient-to-b from-white/40 sticky top-0 z-10">
       <nav className="flex  text-white justify-between w-11/12">
+          <Link to="/" onClick={playClick}>
         <div className="flex justify-center items-center cursor-pointer duration-500 ease-in text-transparent shadow-blue-30 p-2">
           <img
             src="/Logo.png"
             className="w-10 saturate-150 drop-shadow-[0_0_4px] drop-shadow-blue-400 p-2"
             alt="logo"
           />
-          <Link to="/">
             <h1
               className="text-2xl content-center bg-gradient-to-b bg-clip-text from-neutral-200/90 to-60% from-48% to-gray-400"
               style={{ fontFamily: "Audiowide" }}
             >
               GameVerse
             </h1>
-          </Link>
         </div>
+          </Link>
         <div>
           {isLoggedIn ? (
             <div>
