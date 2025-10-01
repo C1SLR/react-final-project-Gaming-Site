@@ -4,11 +4,11 @@ export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
     const playHover = () => {
-      const hover = new Audio("/sfx.wav");
+      const hover = new Audio("/hover.mp3");
      hover.play();
     }
   const playClick = () => {
-    const click = new Audio("/click.wav")
+    const click = new Audio("/click.mp3")
     click.play();
   }
   const [gamesData, setGamesData] = useState([]);
