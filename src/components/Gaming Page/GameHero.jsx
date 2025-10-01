@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import HeroSkeleton from "../gaming card/Skeleton/HeroSkeleton"
 import Modal from "@mui/material/Modal";
 function GameHero({ game }) {
-  const [showModal, setShowModal] = useState(false)
   const [trailer, setTrailer] = useState([]);
   const { slug } = useParams();
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -50,16 +49,11 @@ function GameHero({ game }) {
                   </div>
                 </div>
               ) : (
-                <div onClick={handleOpen} className="bg-neutral-900 h-14 w-25 md:h-30 md:w-50">
+                <div className="bg-neutral-900 h-14 w-25 md:h-30 md:w-50">
                   <h1 className=" flex font-thin text-sm md:text-xl md:py-11 justify-center py-4">
                     No trailer
                   </h1>
-                   <Modal open={open} onClose={handleClose}>
-         <div>
-          
-         </div>
-
-      </Modal>
+                  
                 </div>
                 
               )}
