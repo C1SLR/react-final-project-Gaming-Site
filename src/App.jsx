@@ -7,7 +7,7 @@ import Footer from "./components/footer/Footer";
 function App() {
   useAuthSync();
   return (
-    <div className="bg-black/92">
+    <div className="bg-black">
       <GameProvider>
         <NavBar />
         <Outlet />

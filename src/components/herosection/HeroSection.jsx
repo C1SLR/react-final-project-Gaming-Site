@@ -5,6 +5,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { GameContext } from "../Context/Context";
+import Loader from "../../reusable components/screen loader/DefaultLoader";
 const HeroSection = () => {
   const { bannerPhoto, setBannerPhoto } = useContext(GameContext);
   useEffect(() => {
@@ -43,7 +44,7 @@ const HeroSection = () => {
           </Swiper>
         </div>
       ) : (
-        <div className="text-white">Loading</div>
+        <Loader/>
       )}
     </div>
   );

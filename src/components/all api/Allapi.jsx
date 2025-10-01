@@ -60,10 +60,6 @@ export const gameDetails = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}?key=${key}`);
   return res.data;
 };
-// export const listOfDlcGames = async (gameSlug) => {
-//   const res = await globalURL.get(`/games/${gameSlug}/additions?key=${key}`);
-//   return res.data;
-// };
 export const screenShots = async (gameSlug) => {
   const res = await globalURL.get(`/games/${gameSlug}/screenshots?key=${key}`);
   return res.data.results;

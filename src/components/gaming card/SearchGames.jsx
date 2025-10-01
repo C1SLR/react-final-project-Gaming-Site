@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Rating from "@mui/material/Rating";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GameContext } from "../Context/Context";
 import { IoDesktopSharp } from "react-icons/io5";
 import { FaXbox } from "react-icons/fa";
@@ -9,6 +9,9 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { FaAndroid } from "react-icons/fa";
 
 const SearchGames = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const { Maturity } = useContext(GameContext);
   const location = useLocation();
   const { searchedGames, query } = location.state || {

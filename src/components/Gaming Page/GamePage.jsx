@@ -17,11 +17,6 @@ function GamePage({}) {
         .join(" ");
     };
     if (slug) {
-      // listOfDlcGames(slug).then((res) => {
-      //   // console.log(res);
-      //   setDlcGamesData(res);
-
-      // });
       gameDetails(slug).then((res) => {
         const pcPlatform = res.platforms.find((plat) => plat.platform.id === 4);
         console.log("Game details =>>>>", res);
