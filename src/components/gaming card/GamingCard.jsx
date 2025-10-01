@@ -80,15 +80,6 @@ const GamingCard = ({ slug }) => {
                               {val.genres[0]?.name}
                             </p>
                             <div className=" flex gap-1  text-2xl">
-                              {/* <span>
-                            <IoDesktopSharp />
-                          </span>
-                          <span>
-                            <FaPlaystation />
-                          </span>
-                          <span>
-                            <FaXbox />
-                          </span> */}
                               {val.parent_platforms?.map((plat) => (
                                 <span key={plat.platform?.id}>
                                   {platIcons[plat.platform?.slug] || "N/A"}
@@ -98,7 +89,6 @@ const GamingCard = ({ slug }) => {
                           </div>
                         </div>
                       </div>
-
                       <div className="text-gray-400 pt-6 pb-3 text-xl  flex justify-center">
                         <button> View details</button>
                       </div>
