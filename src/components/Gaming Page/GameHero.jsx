@@ -7,6 +7,7 @@ function GameHero({ game }) {
   const [trailer, setTrailer] = useState([]);
   const { slug } = useParams();
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [showModal,setShowModal] = useState(true);
   useEffect(() => {
     trailers(slug).then((res) => {
       setTrailer(res.data.results);
@@ -55,8 +56,16 @@ function GameHero({ game }) {
                   </h1>
                   
                 </div>
+                  
                 
               )}
+                <Modal open={showModal} onClose={()=>setShowModal(false)}>
+                  <div className="p-30 border flex justify-center w-full h-fit border-white">
+                    <div className="bg-red-600 w-9/12 h-[30rem]"></div>
+                    <div onClick={()=> setShowModal(false)} className="w-12 rounded-full bottom-3 right-3 relative text-white text-center h-12 p-2 text-xl font-mono bg-neutral-800">X</div>
+
+                  </div>
+                </Modal>
             </div>
           </div>
         </div>
