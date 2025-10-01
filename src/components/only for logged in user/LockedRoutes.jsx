@@ -7,7 +7,7 @@ const LockedRoutes = ({ children }) => {
   if (isLoading) {
     return <DefaultLoader />;
   }
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     return <LoginChecker />;
   }
   return children;
