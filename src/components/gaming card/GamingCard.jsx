@@ -31,7 +31,7 @@ const GamingCard = ({ slug }) => {
   return (
     <div>
       {gamesData.length > 0 ? (
-        <div className="flex flex-wrap justify-center w-11/12 justify-self-center border gap-5">
+        <div className="flex flex-wrap justify-center w-11/12 justify-self-center gap-5">
           {gamesData.map((val) => (
             <div
               key={val.id}
@@ -89,7 +89,7 @@ const GamingCard = ({ slug }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="text-gray-400 pt-6 pb-3 text-xl  flex justify-center">
+                      <div className="text-gray-400 pt-6 pb-3 text-xl  flex justify-center cursor-pointer">
                         <button> View details</button>
                       </div>
                     </div>

@@ -134,7 +134,7 @@ const MostPlayedCard = () => {
                       </div>
 
                       <div className="text-gray-400 pt-6 pb-3 text-xl  flex justify-center">
-                        <button> View details</button>
+                        <button className="hover:text-gray-200 cursor-pointer"> View details</button>
                       </div>
                     </div>
                   </div>
