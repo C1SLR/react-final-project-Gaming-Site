@@ -1,7 +1,6 @@
 function GameDetails({ game }) {
-
-    let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
-      let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim()
+  let minSpec = game?.min_spec?.replace(/^Minimum:/, "").trim();
+  let recSpec = game?.rec_spec?.replace(/^Recommended:/, "").trim();
 
   return (
     <>
@@ -31,24 +30,22 @@ function GameDetails({ game }) {
         </div>
         <div>
           <div className="bg-blue-900 bg-gradient-to-l from-black to-70% from-40%">
-          <h1 className="text-xl p-2  text-indigo-400">Specifications</h1>
-        </div>
-          <div className="bg-neutral-900 text-lg md:text-2xl flex gap-3 max-md:flex-col text-white p-10">
-            {/* //Minimum */}
-            <div className="w-6/12 text-xl max-md:w-full">
-              <div className="">
-                <h1 className="text-center text-xl lg:text-3xl">MINIMUM</h1>
+            <h1 className="text-xl p-2  text-indigo-400">Specifications</h1>
+          </div>
+          <div className="text-gray-200/80">
+            <div>
+              <div className="bg-gradient-to-l to-white/15 mx-5 px-5">
+                <h1 className="text-xl lg:text-3xl my-5">MINIMUM</h1>
               </div>
-              <div className="py-5">
+              <div className="bg-white/10 p-5 rounded m-5 py-5">
                 <p>{minSpec || "No data available"}</p>
               </div>
             </div>
-            {/* //Recommended */}
-           <div className="w-6/12 max-md:w-full">
-              <div className="">
-                <h1 className="text-center text-xl lg:text-3xl">RECOMMENDED</h1>
+            <div>
+              <div className="bg-gradient-to-l to-white/15 mx-5 px-5">
+                <h1 className="text-xl lg:text-3xl">RECOMMENDED</h1>
               </div>
-              <div className="py-5">
+              <div className="bg-white/10 p-5 rounded m-5 py-5">
                 <p>{recSpec || "No data available"}</p>
               </div>
             </div>
