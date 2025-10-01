@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-  const playHover = () => {
-    const hover = new Audio("/sfx.wav");
-    hover.play();
-  };
+    const playHover = () => {
+      const hover = new Audio("/sfx.wav");
+     hover.play();
+    }
   const playClick = () => {
-    const click = new Audio("/click.wav");
+    const click = new Audio("/click.wav")
     click.play();
   };
   const [gamesData, setGamesData] = useState([]);
