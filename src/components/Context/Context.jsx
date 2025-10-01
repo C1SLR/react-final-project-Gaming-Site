@@ -1,16 +1,17 @@
 import { createContext, useState } from "react";
-
+import { searchapi } from "../all api/Allapi";
+import { useNavigate } from "react-router-dom";
 export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-    const playHover = () => {
-      const hover = new Audio("/sfx.wav");
-     hover.play();
-    }
+  const playHover = () => {
+    const hover = new Audio("/sfx.wav");
+    hover.play();
+  };
   const playClick = () => {
-    const click = new Audio("/click.wav")
+    const click = new Audio("/click.wav");
     click.play();
-  }
+  };
   const [gamesData, setGamesData] = useState([]);
   const [bannerPhoto, setBannerPhoto] = useState([]);
   const [gamesdetails, setGamesDetails] = useState([]);
@@ -37,6 +38,22 @@ export const GameProvider = ({ children }) => {
     ),
   };
 
+  const navigate = useNavigate();
+  const searchHandler = async (e) => {
+    e.preventDefault();
+    setSearchGames(searchapi);
+    if (!searchGames) return;
+
+    try {
+      const res = await searchapi(searchGames);
+      navigate("/search-results", {
+        state: { searchedGames: res, query: searchGames },
+      });
+      // console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <GameContext.Provider
@@ -57,7 +74,8 @@ export const GameProvider = ({ children }) => {
         isOpen,
         setIsOpen,
         playHover,
-        playClick
+        playClick,
+        searchHandler,
       }}
     >
       {children}

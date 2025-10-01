@@ -7,6 +7,7 @@ import { FaXbox } from "react-icons/fa";
 import { FaApple, FaLinux, FaPlaystation } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { FaAndroid } from "react-icons/fa";
+import SearchApi from "../../reusable components/search games/SearchApi";
 
 const SearchGames = () => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const SearchGames = () => {
   };
   return (
     <div>
+      <SearchApi />
       <h1 className="text-white text-center text-2xl font-medium my-5">
         Search Results For :"{query}"
       </h1>
