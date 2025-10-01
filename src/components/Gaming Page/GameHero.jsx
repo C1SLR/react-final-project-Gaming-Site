@@ -7,14 +7,15 @@ function GameHero({ game }) {
   const [trailer, setTrailer] = useState([]);
   const { slug } = useParams();
   const [imgLoaded, setImgLoaded] = useState(false);
-  const [showModal,setShowModal] = useState(true);
+  const [showModal,setShowModal] = useState(false);
   useEffect(() => {
     trailers(slug).then((res) => {
-      setTrailer(res.data.results);
-      console.log("Trailers", res.data.results);
+      setTrailer(res?.data?.results);
     });
   
   }, []);
+
+  
   useEffect(() => {
     if (game?.img) {
       const img = new Image();
@@ -46,7 +47,7 @@ function GameHero({ game }) {
               {!trailer.length == 0 ? (
                 <div className="w-[10rem] md:w-[15rem] border">
                   <div>
-                    <img src={trailer[0].preview} />
+                    <img onClick={()=> setShowModal(true)} src={trailer[0].preview} />
                   </div>
                 </div>
               ) : (
@@ -59,13 +60,18 @@ function GameHero({ game }) {
                   
                 
               )}
-                <Modal open={showModal} onClose={()=>setShowModal(false)}>
-                  <div className="p-30 border flex justify-center w-full h-fit border-white">
-                    <div className="bg-red-600 w-9/12 h-[30rem]"></div>
-                    <div onClick={()=> setShowModal(false)} className="w-12 rounded-full bottom-3 right-3 relative text-white text-center h-12 p-2 text-xl font-mono bg-neutral-800">X</div>
+              {trailer[0]?.data?.max && (
+                <Modal open={showModal} onClick={()=> setShowModal(false)} onClose={()=>setShowModal(false)}>
+                  <div className="flex justify-center"> 
 
+                  <div className=" w-full my-50 md:w-9/12 xl:my-10">
+                    <video className="focus:outline-none" controls autoPlay muted loop>
+                      <source  src={trailer[0].data?.max} type="video/mp4" />
+                    </video>
+                  </div>
                   </div>
                 </Modal>
+              )}
             </div>
           </div>
         </div>
